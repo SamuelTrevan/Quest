@@ -61,13 +61,17 @@ namespace Quest
 
 
             string questAgain = "y";
+
+            Console.Write("What is your name, adventure?");
+            Adventurer theAdventurer = new Adventurer(Console.ReadLine(), newRobe, newHat);
+
+            Console.WriteLine(theAdventurer.GetDescription());
+
             while (questAgain == "y")
             {
+                Console.WriteLine(theAdventurer.Awesomeness);
+                int count = 0;
 
-                Console.Write("What is your name, adventure?");
-                Adventurer theAdventurer = new Adventurer(Console.ReadLine(), newRobe, newHat);
-
-                Console.WriteLine(theAdventurer.GetDescription());
 
                 // A list of challenges for the Adventurer to complete
                 // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
@@ -89,7 +93,10 @@ namespace Quest
                 // Loop through all the challenges and subject the Adventurer to them
                 foreach (Challenge challenge in randomChallenges)
                 {
-                    challenge.RunChallenge(theAdventurer);
+                    if (challenge.RunChallenge(theAdventurer))
+                    {
+                        count++;
+                    };
                 }
 
                 // This code examines how Awesome the Adventurer is after completing the challenges
@@ -109,6 +116,12 @@ namespace Quest
                 newPrize.ShowPrize(theAdventurer);
                 Console.WriteLine("Would you like to go on a quest Y/N: ");
                 questAgain = Console.ReadLine().ToLower();
+
+                Console.WriteLine(theAdventurer.Awesomeness);
+
+                theAdventurer.Awesomeness += (count * 10);
+
+                Console.WriteLine(theAdventurer.Awesomeness);
             }
         }
     }
