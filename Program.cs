@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 // Every class in the program is defined within the "Quest" namespace
@@ -32,6 +33,8 @@ namespace Quest
 ",
                 4, 20
             );
+            Challenge threeTimestheree = new Challenge("3 * 3", 9, 10);
+            Challenge tenDiviedBytwo = new Challenge("10 / 2", 5, 10);
 
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
@@ -74,11 +77,17 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                threeTimestheree,
+                tenDiviedBytwo
             };
 
+                Random rnd = new Random();
+
+                List<Challenge> randomChallenges = challenges.OrderBy(x => rnd.Next()).Take(5).ToList();
+
                 // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in randomChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
