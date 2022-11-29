@@ -49,13 +49,18 @@ namespace Quest
                 Length = 90,
             };
 
+            Hat newHat = new Hat()
+            {
+                ShininessLevel = 9,
+            };
+
 
             string questAgain = "y";
             while (questAgain == "y")
             {
 
                 Console.Write("What is your name, adventure?");
-                Adventurer theAdventurer = new Adventurer(Console.ReadLine(), newRobe);
+                Adventurer theAdventurer = new Adventurer(Console.ReadLine(), newRobe, newHat);
 
                 Console.WriteLine(theAdventurer.GetDescription());
 
