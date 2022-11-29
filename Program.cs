@@ -54,6 +54,8 @@ namespace Quest
                 ShininessLevel = 9,
             };
 
+            Prize newPrize = new Prize("A large Ruby!");
+
 
             string questAgain = "y";
             while (questAgain == "y")
@@ -95,6 +97,7 @@ namespace Quest
                 {
                     Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
                 }
+                newPrize.ShowPrize(theAdventurer);
                 Console.WriteLine("Would you like to go on a quest Y/N: ");
                 questAgain = Console.ReadLine().ToLower();
             }
